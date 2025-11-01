@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Lint frontend
+cd frontend && npm run lint
+
+# Format check
+cd frontend && npm run format
+
+
+

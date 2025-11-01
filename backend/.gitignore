@@ -1,0 +1,31 @@
+# CodeIgniter 4
+/vendor/
+/writable/cache/*
+/writable/logs/*
+/writable/session/*
+/writable/uploads/*
+!/writable/cache/index.html
+!/writable/logs/index.html
+!/writable/session/index.html
+!/writable/uploads/index.html
+
+# Base de datos
+*.db
+*.sqlite
+*.sqlite3
+
+# Entorno
+.env
+.env.test
+
+# PHPUnit
+/build/
+/phpunit*.xml
+.phpunit.result.cache
+
+# Composer
+/vendor/
+composer.lock
+
+
+

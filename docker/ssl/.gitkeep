@@ -1,0 +1,10 @@
+# Este directorio almacenará los certificados SSL para HTTPS
+# 
+# Para Let's Encrypt:
+# 1. Obtener certificado: sudo certbot certonly --standalone -d tudominio.com
+# 2. Copiar aquí:
+#    sudo cp /etc/letsencrypt/live/tudominio.com/fullchain.pem ./cert.pem
+#    sudo cp /etc/letsencrypt/live/tudominio.com/privkey.pem ./key.pem
+
+
+

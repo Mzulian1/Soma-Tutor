@@ -1,0 +1,63 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# CI
+.github
+
+# Documentation
+*.md
+docs/
+
+# Node modules
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Tests
+coverage/
+.nyc_output/
+
+# Logs
+logs/
+*.log
+
+# Temporary
+tmp/
+temp/
+
+# Build artifacts (except dist for frontend)
+.cache/
+build/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Backend specific
+backend/vendor/
+backend/writable/cache/*
+backend/writable/logs/*
+backend/writable/session/*
+!backend/writable/.gitkeep
+
+# Frontend specific (except dist)
+frontend/node_modules/
+frontend/.cache/
+
+
+
