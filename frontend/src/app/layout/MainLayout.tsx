@@ -17,6 +17,7 @@ import {
     Brightness7,
     AccountCircle,
     Logout,
+    Settings,
 } from '@mui/icons-material'
 import { useAuthStore } from '@/store/authStore'
 import { useThemeStore } from '@/store/themeStore'
@@ -36,6 +37,11 @@ export default function MainLayout() {
 
     const handleClose = () => {
         setAnchorEl(null)
+    }
+
+    const handlePerfil = () => {
+        handleClose()
+        navigate('/perfil')
     }
 
     const handleLogout = () => {
@@ -102,6 +108,10 @@ export default function MainLayout() {
                             <Typography variant="caption" color="text.secondary">
                                 {tutor?.email}
                             </Typography>
+                        </MenuItem>
+                        <MenuItem onClick={handlePerfil}>
+                            <Settings fontSize="small" sx={{ mr: 1 }} />
+                            Mi Perfil
                         </MenuItem>
                         <MenuItem onClick={handleLogout}>
                             <Logout fontSize="small" sx={{ mr: 1 }} />

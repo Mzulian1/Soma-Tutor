@@ -19,12 +19,13 @@ import {
     Alert,
     Avatar,
 } from '@mui/material'
-import { ArrowBack } from '@mui/icons-material'
+import { ArrowBack, Download } from '@mui/icons-material'
 import { apiResidenteService } from '@/services'
 import type { Antecedente, Medicamento, Vacuna } from '@/services/residenteService'
 import { Residente } from '@/store/residenteStore'
 import LoadingSpinner from '@/components/LoadingSpinner'
 import { formatDate, calculateAge } from '@/utils/dateUtils'
+import { generarPDFFichaClinica } from '@/utils/pdfGenerator'
 
 interface TabPanelProps {
     children?: React.ReactNode
@@ -90,6 +91,25 @@ export default function FichaPage() {
         }
     }
 
+    const handleDescargarFicha = () => {
+        if (!residente) return
+
+        try {
+            const blob = generarPDFFichaClinica(residente, antecedentes, medicamentos, vacunas)
+            const url = window.URL.createObjectURL(blob)
+            const link = document.createElement('a')
+            link.href = url
+            link.setAttribute('download', `Ficha_Clinica_${residente.nombre.replace(/ /g, '_')}.pdf`)
+            document.body.appendChild(link)
+            link.click()
+            link.remove()
+            window.URL.revokeObjectURL(url)
+        } catch (err) {
+            console.error('Error generando PDF:', err)
+            alert('Error al generar el PDF de la ficha clínica')
+        }
+    }
+
     if (loading) {
         return <LoadingSpinner message="Cargando ficha clínica..." />
     }
@@ -104,9 +124,19 @@ export default function FichaPage() {
 
     return (
         <Box>
-            <Button startIcon={<ArrowBack />} onClick={() => navigate('/')} sx={{ mb: 2 }}>
-                Volver al Dashboard
-            </Button>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+                <Button startIcon={<ArrowBack />} onClick={() => navigate('/')}>
+                    Volver al Dashboard
+                </Button>
+                <Button
+                    variant="contained"
+                    startIcon={<Download />}
+                    onClick={handleDescargarFicha}
+                    color="primary"
+                >
+                    Descargar Ficha Completa (PDF)
+                </Button>
+            </Box>
 
             {/* Encabezado del residente */}
             <Card sx={{ mb: 3 }}>

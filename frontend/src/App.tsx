@@ -17,6 +17,7 @@ import ActividadesPage from './features/actividades/ActividadesPage'
 import DocumentosPage from './features/documentos/DocumentosPage'
 import TestPage from './features/test/TestPage'
 import EventosPage from './features/eventos/EventosPage'
+import PerfilPage from './features/perfil/PerfilPage'
 
 // Guard para rutas privadas
 function PrivateRoute({ children }: { children: React.ReactNode }) {
@@ -46,6 +47,7 @@ function App() {
                     }
                 >
                     <Route path="/" element={<DashboardPage />} />
+                    <Route path="/perfil" element={<PerfilPage />} />
                     <Route path="/ficha/:residenteId" element={<FichaPage />} />
                     <Route path="/actividades/:residenteId" element={<ActividadesPage />} />
                     <Route path="/documentos/:residenteId" element={<DocumentosPage />} />

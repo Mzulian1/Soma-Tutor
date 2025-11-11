@@ -9,6 +9,9 @@ export const mockTutores = [
         nombre: 'María José González Pérez',
         email: 'maria.gonzalez@example.cl',
         telefono: '+56912345678',
+        direccion: 'Av. Providencia 1234, Providencia, Santiago',
+        telefono_secundario: '+56223334444',
+        relacion: 'Nieta',
     },
     {
         id: 2,
@@ -16,6 +19,9 @@ export const mockTutores = [
         nombre: 'Carlos Alberto Muñoz Silva',
         email: 'carlos.munoz@example.cl',
         telefono: '+56987654321',
+        direccion: 'Los Leones 876, Providencia, Santiago',
+        telefono_secundario: '',
+        relacion: 'Hijo',
     },
 ]
 
@@ -23,36 +29,37 @@ export const mockResidentes = [
     {
         id: 1,
         rut: '5.555.555-5',
-        nombre: 'Rosa Elena Contreras Morales',
-        foto_url: 'https://i.pravatar.cc/150?img=47',
-        fecha_nacimiento: '1940-03-15',
-        sexo: 'F',
+        nombre: 'Pedro Antonio González Rojas',
+        foto_url: 'https://images.unsplash.com/photo-1566616213894-2d4e1baee5d8?w=150&h=150&fit=crop&crop=faces',
+        fecha_nacimiento: '1938-07-22',
+        sexo: 'M',
         estado_general: 'Estable',
-        alergias: 'Penicilina, Polen',
+        alergias: 'Penicilina',
     },
     {
         id: 2,
         rut: '6.666.666-6',
-        nombre: 'Pedro Antonio Ramírez López',
-        foto_url: 'https://i.pravatar.cc/150?img=60',
-        fecha_nacimiento: '1938-07-22',
-        sexo: 'M',
-        estado_general: 'Delicado',
-        alergias: 'Ninguna conocida',
-    },
-    {
-        id: 3,
-        rut: '7.777.777-7',
         nombre: 'Carmen Gloria Fernández Torres',
-        foto_url: 'https://i.pravatar.cc/150?img=44',
+        foto_url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=150&h=150&fit=crop&crop=faces',
         fecha_nacimiento: '1942-11-08',
         sexo: 'F',
         estado_general: 'Bueno',
         alergias: 'Mariscos',
     },
+    {
+        id: 3,
+        rut: '7.777.777-7',
+        nombre: 'Rosa Elena Contreras Morales',
+        foto_url: 'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?w=150&h=150&fit=crop&crop=faces',
+        fecha_nacimiento: '1940-03-15',
+        sexo: 'F',
+        estado_general: 'Delicado',
+        alergias: 'Polen, Ácaros',
+    },
 ]
 
 export const mockAntecedentes = [
+    // Residente 1 (Pedro Antonio - Abuelo)
     {
         id: 1,
         residente_id: 1,
@@ -81,9 +88,47 @@ export const mockAntecedentes = [
         descripcion: 'Antecedentes familiares de cardiopatías',
         fecha: null,
     },
+    // Residente 2 (Pedro Antonio)
+    {
+        id: 5,
+        residente_id: 2,
+        tipo: 'medico',
+        descripcion: 'Enfermedad de Parkinson diagnosticada en 2015',
+        fecha: '2015-06-10',
+    },
+    {
+        id: 6,
+        residente_id: 2,
+        tipo: 'medico',
+        descripcion: 'Hipertensión arterial controlada',
+        fecha: '2008-03-15',
+    },
+    {
+        id: 7,
+        residente_id: 2,
+        tipo: 'quirurgico',
+        descripcion: 'Prótesis de cadera izquierda',
+        fecha: '2019-11-22',
+    },
+    // Residente 3 (Carmen Gloria)
+    {
+        id: 8,
+        residente_id: 3,
+        tipo: 'medico',
+        descripcion: 'Osteoporosis en tratamiento',
+        fecha: '2012-05-08',
+    },
+    {
+        id: 9,
+        residente_id: 3,
+        tipo: 'medico',
+        descripcion: 'Hipotiroidismo compensado',
+        fecha: '2010-02-20',
+    },
 ]
 
 export const mockMedicamentos = [
+    // Residente 1 (Pedro Antonio - Abuelo)
     {
         id: 1,
         residente_id: 1,
@@ -122,6 +167,58 @@ export const mockMedicamentos = [
         dosis: '20mg',
         frecuencia: 'Una vez al día',
         indicaciones: 'En ayunas',
+        activo: 1,
+    },
+    // Residente 2 (Pedro Antonio)
+    {
+        id: 5,
+        residente_id: 2,
+        nombre: 'Levodopa/Carbidopa 250/25mg',
+        via: 'Oral',
+        dosis: '1 comprimido',
+        frecuencia: 'Cada 8 horas',
+        indicaciones: 'Tomar con alimentos',
+        activo: 1,
+    },
+    {
+        id: 6,
+        residente_id: 2,
+        nombre: 'Losartán 50mg',
+        via: 'Oral',
+        dosis: '50mg',
+        frecuencia: 'Una vez al día',
+        indicaciones: 'Por la mañana',
+        activo: 1,
+    },
+    {
+        id: 7,
+        residente_id: 2,
+        nombre: 'Aspirina 100mg',
+        via: 'Oral',
+        dosis: '100mg',
+        frecuencia: 'Una vez al día',
+        indicaciones: 'Con las comidas',
+        activo: 1,
+    },
+    // Residente 3 (Carmen Gloria)
+    {
+        id: 8,
+        residente_id: 3,
+        nombre: 'Calcio + Vitamina D',
+        via: 'Oral',
+        dosis: '1 comprimido',
+        frecuencia: 'Una vez al día',
+        indicaciones: 'Con el desayuno',
+        activo: 1,
+    },
+    {
+        id: 9,
+        residente_id: 3,
+        nombre: 'Levotiroxina 100mcg',
+        via: 'Oral',
+        dosis: '100mcg',
+        frecuencia: 'Una vez al día',
+        indicaciones: 'En ayunas, 30 min antes del desayuno',
         activo: 1,
     },
 ]
@@ -284,6 +381,7 @@ export const mockEventos = [
 ]
 
 export const mockDocumentos = [
+    // Documentos para Residente 1 (Pedro Antonio - Abuelo)
     {
         id: 1,
         residente_id: 1,
@@ -316,13 +414,78 @@ export const mockDocumentos = [
         url: 'docs/autorizacion_1.pdf',
         fecha: '2024-01-15',
     },
+    {
+        id: 5,
+        residente_id: 1,
+        tipo: 'liquidacion',
+        nombre: 'Liquidación Agosto 2024.pdf',
+        url: 'docs/liquidacion_ago_1.pdf',
+        fecha: '2024-08-01',
+    },
+    // Documentos para Residente 2 (Carmen Gloria)
+    {
+        id: 6,
+        residente_id: 2,
+        tipo: 'contrato',
+        nombre: 'Contrato de Residencia 2024.pdf',
+        url: 'docs/contrato_2.pdf',
+        fecha: '2024-01-01',
+    },
+    {
+        id: 7,
+        residente_id: 2,
+        tipo: 'liquidacion',
+        nombre: 'Liquidación Octubre 2024.pdf',
+        url: 'docs/liquidacion_oct_2.pdf',
+        fecha: '2024-10-01',
+    },
+    {
+        id: 8,
+        residente_id: 2,
+        tipo: 'autorizacion',
+        nombre: 'Autorización Tratamiento Médico.pdf',
+        url: 'docs/autorizacion_2.pdf',
+        fecha: '2024-01-15',
+    },
+    // Documentos para Residente 3 (Rosa Elena)
+    {
+        id: 9,
+        residente_id: 3,
+        tipo: 'contrato',
+        nombre: 'Contrato de Residencia 2024.pdf',
+        url: 'docs/contrato_3.pdf',
+        fecha: '2024-01-01',
+    },
+    {
+        id: 10,
+        residente_id: 3,
+        tipo: 'liquidacion',
+        nombre: 'Liquidación Octubre 2024.pdf',
+        url: 'docs/liquidacion_oct_3.pdf',
+        fecha: '2024-10-01',
+    },
+    {
+        id: 11,
+        residente_id: 3,
+        tipo: 'liquidacion',
+        nombre: 'Liquidación Septiembre 2024.pdf',
+        url: 'docs/liquidacion_sep_3.pdf',
+        fecha: '2024-09-01',
+    },
+    {
+        id: 12,
+        residente_id: 3,
+        tipo: 'autorizacion',
+        nombre: 'Autorización Tratamiento Médico.pdf',
+        url: 'docs/autorizacion_3.pdf',
+        fecha: '2024-01-15',
+    },
 ]
 
-// Relación tutor-residente
+// Relación tutor-residente (Tutor 1 cuida de su abuelo)
 export const mockTutorResidente = [
-    { tutor_id: 1, residente_id: 1 },
-    { tutor_id: 1, residente_id: 3 },
-    { tutor_id: 2, residente_id: 2 },
+    { tutor_id: 1, residente_id: 1 }, // María José cuida de su abuelo Pedro Antonio
+    { tutor_id: 2, residente_id: 2 }, // Carlos cuida de Carmen Gloria
 ]
 
 

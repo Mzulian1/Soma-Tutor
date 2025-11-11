@@ -15,6 +15,7 @@ import {
     mockDocumentos,
     mockTutorResidente,
 } from './mockData'
+import { generarPDFSintetico } from '@/utils/pdfGenerator'
 
 // Simular delay de red
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
@@ -44,6 +45,10 @@ export const mockAuthService = {
                 rut: tutor.rut,
                 nombre: tutor.nombre,
                 email: tutor.email,
+                telefono: tutor.telefono,
+                telefono_secundario: tutor.telefono_secundario,
+                direccion: tutor.direccion,
+                relacion: tutor.relacion,
             },
         }
     },
@@ -169,9 +174,26 @@ export const mockResidenteService = {
             throw new Error('Documento no encontrado')
         }
 
-        // Crear un PDF simulado (blob de texto)
-        const content = `DOCUMENTO DEMO - SOMA TUTOR\n\nTipo: ${doc.tipo}\nNombre: ${doc.nombre}\nFecha: ${doc.fecha}\n\nEste es un documento de demostración.\nEn producción, aquí iría el PDF real.`
-        return new Blob([content], { type: 'application/pdf' })
+        // Obtener datos del residente
+        const residente = mockResidentes.find((r) => r.id === doc.residente_id)
+        if (!residente) {
+            throw new Error('Residente no encontrado')
+        }
+
+        // Obtener datos del tutor
+        const tutorResidente = mockTutorResidente.find((tr) => tr.residente_id === doc.residente_id)
+        const tutor = tutorResidente ? mockTutores.find((t) => t.id === tutorResidente.tutor_id) : null
+
+        // Generar PDF con datos sintéticos realistas
+        return generarPDFSintetico({
+            tipo: doc.tipo,
+            nombre: doc.nombre,
+            fecha: doc.fecha,
+            residenteNombre: residente.nombre,
+            residenteRut: residente.rut,
+            tutorNombre: tutor?.nombre || 'Sin tutor asignado',
+            tutorRut: tutor?.rut || '',
+        })
     },
 }
 

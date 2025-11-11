@@ -211,6 +211,70 @@ La aplicación estará disponible en `http://localhost`
 
 ---
 
+## 🌐 Deployment Frontend (Solo Demo)
+
+Si deseas desplegar **solo el frontend** con datos mock (sin backend):
+
+### Opción 1: cPanel (Hosting Compartido)
+
+¿Tienes un servidor con cPanel? Usa nuestro script automatizado:
+
+**Windows:**
+```powershell
+cd frontend
+.\prepare-cpanel.ps1
+```
+
+**Linux/Mac:**
+```bash
+cd frontend
+chmod +x prepare-cpanel.sh
+./prepare-cpanel.sh
+```
+
+Luego sube el archivo ZIP generado a cPanel File Manager → public_html/
+
+📚 [**Guía completa cPanel**](./docs/DEPLOYMENT-CPANEL.md) | [Guía rápida](./frontend/README-CPANEL.md)
+
+---
+
+### Opción 2: Netlify (2 minutos)
+
+```bash
+cd frontend
+npm run build
+# Arrastra la carpeta dist/ a https://app.netlify.com/drop
+```
+
+---
+
+### Opción 3: Scripts Automatizados
+
+**Windows:**
+```powershell
+cd frontend
+.\deploy.ps1 netlify  # o vercel, docker, build
+```
+
+**Linux/Mac:**
+```bash
+cd frontend
+chmod +x deploy.sh
+./deploy.sh netlify  # o vercel, docker, build
+```
+
+---
+
+### Otras Opciones
+
+- **Vercel**: `npm install -g vercel && vercel --prod`
+- **Docker**: `docker build -t soma-tutor-frontend . && docker run -d -p 8080:80 soma-tutor-frontend`
+- **Servidor tradicional**: `npm run build` y sube `dist/` por FTP/SFTP
+
+📚 **Documentación completa**: [DEPLOYMENT.md](./docs/DEPLOYMENT.md) | [Frontend Quick Guide](./frontend/DEPLOYMENT-QUICK.md)
+
+---
+
 ## 🔑 Credenciales Demo
 
 ### Tutor 1 (2 residentes)
@@ -238,6 +302,7 @@ Este proyecto incluye documentación detallada en el directorio `/docs`:
 | [👤 Flujos de Usuario](./docs/FLUJOS-USUARIO.md) | Flujos paso a paso desde perspectiva del usuario | PO, UX, QA |
 | [🔌 API Reference](./docs/API-REFERENCE.md) | Referencia completa de todos los endpoints | Desarrolladores Frontend |
 | [💻 Guía de Desarrollo](./docs/GUIA-DESARROLLO.md) | Guía práctica para contribuir al proyecto | Desarrolladores |
+| [🚀 Deployment](./docs/DEPLOYMENT.md) | Guía completa de deployment en producción | DevOps, Arquitectos |
 | [🔧 Troubleshooting](./docs/TROUBLESHOOTING.md) | Solución de problemas comunes | DevOps, Soporte |
 
 ### Inicio Rápido por Rol

@@ -6,6 +6,10 @@ interface Tutor {
     rut: string
     nombre: string
     email: string
+    telefono?: string
+    telefono_secundario?: string
+    direccion?: string
+    relacion?: string
 }
 
 interface AuthState {
